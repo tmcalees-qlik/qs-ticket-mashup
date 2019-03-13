@@ -6,7 +6,6 @@ const Hoek = require('hoek');
 const MashupStaticRoutes = require('./routes/mashup-static-routes');
 const MashupViewRoutes = require('./routes/mashup-view-routes');
 const MashupAuthRoutes = require('./routes/mashup-login-routes');
-const QlikTicketAuthenticationRoutes = require('./routes/qlik-ticket-module');
 
 var cfg = require('./util/qlik-config');
 
@@ -62,6 +61,5 @@ start().then(result => {
     
     server.route(MashupStaticRoutes);                         // Configure routes for static pages
     server.route(MashupViewRoutes);                           // Configure routes for dynamic view pages
-    server.route(MashupAuthRoutes);                           // Configure routes for mashup authentication (login/logout)
-    server.route(QlikTicketAuthenticationRoutes);            // Configure routes for Qlik Sense Ticket Authentication Module interface        
+    server.route(MashupAuthRoutes);                           // Configure routes for mashup authentication (login/logout)    
 });
