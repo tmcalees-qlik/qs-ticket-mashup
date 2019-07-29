@@ -32,8 +32,8 @@ require( ["js/qlik"], function ( qlik ) {
 	//open apps -- inserted here --	
 	this.app = qlik.openApp('aa72ba66-9cb1-469d-af42-2a71d485550f', config);			// Test
 		
-	this.app.getObject('chart1','krWxx');
-	this.app.getObject('chart2','KYSaNka');
+	this.app.getObject('chart1','RFymB');
+	this.app.getObject('chart2','XJVjFq');
 	
 	//create cubes and lists -- inserted here --
 
