@@ -47,28 +47,27 @@
 
 <div class="row">
     <div class="col-lg-6">        
-        <h3>Session Authentication</h3>
+        <h3>Ticket Authentication</h3>
         <p>
-            Session authentication is solution that allows the Qlik Sense Proxy Service (QPS) to use a session from an external system to validate who the user is.    
+            Ticket authentication is a solution that allows the Qlik Sense Proxy Service (QPS) to use a ticket requested by an external system to validate who the user is.    
         </p>           
         <h4>Description of Workflow</h4>
         <code>
-1. The user accesses your mashup application.  The application determines there is no active session for the user.
-2. The user is redirected to the mashup application’s authentication service.  This is a custom implementation within the application.
-3. The application needs to create a user session cookie with the same name used in the definition of your application’s Qlik Sense Virtual Proxy.  Store the unique identifier for this user’s authenticated session in the cookie.
-4. The application passes a user’s unique session identifier, the user’s Qlik Sense User ID and Directory to the Qlik Sense Proxy Service.  
-5. If successful, the QPS will return a session ticket.
-6. Store the session ticket returned from the QPS along with the unique identifier associated with the user’s session in a global data structure that can be access by the Qlik Sense Authentication Module (note: the authentication module is implemented in your application code).
-7. The first call to a protected Qlik Sense API or resource.
-8. Qlik Sense will call back into the Qlik Sense Authentication Module with the user’s session identifier.  
-9. The authentication module must return the session ticket received in step #4.  This will establish a session between the client browser and Qlik Sense server.                           
+1. The user attempts to access a secured  page in your mashup application.  
+2. Your application checks to see if the user has a valid session.  If not, redirect the user to your application’s authentication module.
+3. Your applications authentication module authenticates the user and, if successful, requests a ticket for the user from Qlik Sense using the Ticket API.  
+4. The Qlik Sense Ticket API returns a ticket.
+5. At this point you have a ticket to access the Qlik Sense server and there are several ways you can use that ticket to establish a session.  A commonly used method is to redirect the client browser to an HTML page contained in the Qlik Sense content repository.  This HTML page contains a redirect to back to your mashup application.
+6. The client browsers requests an HTML page with the ticket acquired in step #4 appended to the URI.
+7. The Qlik Sense server establishes a session using the ticket included in the URI and returns the HTML page.
+8. The client web browser redirects to the mashup home page.                                     
         </code>           
     </div>
     <div class="col-lg-6">
             <div class="col-12 qlik-viz-container">        
                 <div>
                     <h3>&nbsp;</h3>
-                    <img src="../static/client/images/session-flow.png"></img>
+                    <img src="../static/client/images/ticket-flow.png"></img>
                 </div>
             </div>                        
     </div>        
