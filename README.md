@@ -10,10 +10,10 @@ https://github.com/tmcalees-qlik/qs-ticket-mashup.git
 6.	In the Terminal window type npm install
 7.	In the Debug panel click to launch the program.  If you don’t have a launch.json entry, create one with a “program”: “${workspaceFolder}/server.js” entry.
 8.	Create some users in your QSE environment and allocate them a license
-9.	Create a new virtual proxy with the prefix of ticket
+9.	Create a new virtual proxy with the prefix of *ticket*
   *	Name it something like Ticket Authentication
-  *	Make sure you create a unique Session cookie header name, I suggest appending -Ticket to the default
-  *	If you like, you can add the URL http://localhost:1234/login as the Authentication module redirect URI
+  *	Make sure you create a unique Session cookie header name, I suggest appending *-Ticket* to the default
+  *	If you like, you can add the URL http://localhost:1234/login as the Authentication module redirect URI.  This will redirect unauthenticated users that access the http://<host>/ticket to the URI you provide (for authentication).
   *	Add the QSE server name and localhost to the Host white list
   *	Link it to the Central Proxy service
 10.	Enable HTTP support in Central Proxy
