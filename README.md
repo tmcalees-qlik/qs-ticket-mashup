@@ -13,7 +13,7 @@ https://github.com/tmcalees-qlik/qs-ticket-mashup.git
 9.	Create a new virtual proxy with the prefix of *ticket*
   *	Name it something like Ticket Authentication
   *	Make sure you create a unique Session cookie header name, I suggest appending *-Ticket* to the default
-  *	If you like, you can add the URL http://localhost:1234/login as the Authentication module redirect URI.  This will redirect unauthenticated users that access the http://<host>/ticket to the URI you provide (for authentication).
+  *	If you like, you can add the URL http://localhost:1234/login as the Authentication module redirect URI.  This will redirect unauthenticated users that attempt to access Qlik Sense via this virtual proxy path to the URI you provide (for authentication).
   *	Add the QSE server name and localhost to the Host white list
   *	Link it to the Central Proxy service
 10.	Enable HTTP support in Central Proxy
