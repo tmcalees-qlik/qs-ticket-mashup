@@ -1,5 +1,5 @@
 # Readme
-The configuration steps below assume you are running this code on a Qlik Sense Enterprise for Windows server.  While you can certainly run this code on a seperate computer, you will need to export the certificates, move them to the computer running this project, and adjust any of the URLs referring to *localhost*.
+The configuration steps below assume you are running this code on a Qlik Sense Enterprise for Windows server.  You can run this code on a seperate computer, but you will need to copy certificates from the Qlik Sense server, make edits to the *{root}/util/qlik-config.js* file, and update any URLs referring to *localhost* (these changes are not detailed in this readme).
 
 # Qlik Sense Configuration
 1.	Create a new virtual proxy with the prefix of *ticket*
@@ -14,17 +14,16 @@ The configuration steps below assume you are running this code on a Qlik Sense E
 5.	Create some local Windows users in your QSE environment (if needed) and allocate them a license
 
 # Tooling Configuration
-Steps 1-7 listed below are specific to how I run the project. You can use whatever development, GitHub and runtime environment you like.  
 1.	Install Visual Studio Code
 2.	Install Node.js
 3.	Install Git
 4.	Clone the following GitHub repository to your local machine:
-https://github.com/tmcalees-qlik/qs-ticket-mashup.git
-5.	Open the qs-ticket-mashup folder in Visual Studio Code
-6.	In the Terminal window type npm install
+      * https://github.com/tmcalees-qlik/qs-ticket-mashup.git
+5.	Open the *qs-ticket-mashup* folder in Visual Studio Code
 
 # Project Configuration
-1.	You will need to edit the code in the following files: 
+1.	In the Visual Studio Code Terminal window type *npm install* (this will download and install the project dependencies)
+2.	You will need to edit references to Qlik Sense application and object identifiers in the following files: 
       * iframe-integration.html ({root}/templates) 
       * app-session.js ({root}/static/client/javascript) 
 
