@@ -6,14 +6,14 @@ The configuration steps below assume you are running this code on a Qlik Sense E
       *	Name it something like *Ticket Authentication*
       * Make sure you create a unique Session cookie header name, I suggest appending *-Ticket* to the default
       * If you like, you can add the URL http://localhost:1234/login as the Authentication module redirect URI.  This will redirect unauthenticated users that attempt to access Qlik Sense via this virtual proxy path to the URI you provide (for authentication).
-      * Add the unqualified *<QSE server name>* and *localhost* to the Host white list.
+      * Add the unqualified *server name* and *localhost* to the Host white list.
       * Link the newly created virtual proxy to the Central Proxy service.
 2.	Check the *Enable HTTP* box in Central Proxy edit screen.
 3.	Add the file *redirect-ticket.html* to the Default content library.  The file is shipped with this project in the *{root}/qse* folder.
 4.	Import the app *Demo.qvf* into your QSE environment.  The file is shipped with this project in the *{root}/qse* folder.
 5.	Create some local Windows users in your QSE environment (if needed) and allocate them a license
 
-# Project Configuration
+# Tooling Configuration
 Steps 1-7 listed below are specific to how I run the project. You can use whatever development, GitHub and runtime environment you like.  
 1.	Install Visual Studio Code
 2.	Install Node.js
@@ -22,12 +22,33 @@ Steps 1-7 listed below are specific to how I run the project. You can use whatev
 https://github.com/tmcalees-qlik/qs-ticket-mashup.git
 5.	Open the qs-ticket-mashup folder in Visual Studio Code
 6.	In the Terminal window type npm install
-7.	You will need to edit the code in the following files: 
+
+# Project Configuration
+1.	You will need to edit the code in the following files: 
       * iframe-integration.html ({root}/templates) 
       * app-session.js ({root}/static/client/javascript) 
-These files contain Qlik Sense application IDs and object IDs that will need to be replaced with values from your imported Demo.qvf application (you can use Dev Hub to obtain the values).  You can also update the capability-api-1.html, capability-api-2.html, and capability-api-3.html files if you want the sample code to match the actual running code. 
-8.	In the Debug panel click to launch the program.  If you don’t have a launch.json entry, create one with a “program”: “${workspaceFolder}/server.js” entry.
+
+> These files contain Qlik Sense application IDs and object IDs that will need to be replaced with values from your imported Demo.qvf application (you can use Dev Hub to obtain the values).  You can also update the capability-api-1.html, capability-api-2.html, and capability-api-3.html files if you want the sample code to match the actual running code. 
+
+# Run
+1.	In the Visual Studio Code Debug panel, click the green arrow to launch the debugger and run the authentication module.  If you don’t have a launch.json entry for Node.js, you'll need to create one.  Here is what my launch.json file looks like:
+
+```
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/server.js"
+        }
+    ]
+}
+```
 
 
-Once the server is running, you can access the login page using the URL http://localhost:1234/login.  You do not need to enter a password, as no actual password check is implemented in this code; however, you do need to enter a valid user identifier that has been granted a license in your environment.  You also need to enter a valid directory name.  In a default installation, this will be the name of your server.
-#Project Setup (qs-ticket-mashup)
+Once the server is running, you can access the login page using the URL http://localhost:1234/login.  You do not need to enter a password, as no actual password check is implemented in this code; however, you do need to enter a valid *username* and *directory* for a user that has been granted a license in your environment.  
