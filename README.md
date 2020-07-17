@@ -25,6 +25,9 @@ The configuration steps below assume you are running this code on a Qlik Sense E
 1.	In the Visual Studio Code Terminal window type *npm install* (this will download and install the project dependencies)
 2.	You will need to edit references to Qlik Sense application and object identifiers in the following files: 
       * iframe-integration.html ({root}/templates) 
+         * Line 12 contains the documentation that is displayed in the application.  Update the iframe *appid* with the *appid* from the imported *Demo.qvf* application.
+         * Line 17 contains the actual iframe tag.  Update the iframe *appid* with the *appid* from the imported *Demo.qvf* application.
+         * For both of the updates above, you will need to ensure the URL to your server is correct and contains the path of your virtual proxy immediately following the server name.
       * app-session.js ({root}/static/client/javascript) 
 
 > These files contain Qlik Sense application IDs and object IDs that will need to be replaced with values from your imported Demo.qvf application (you can use Dev Hub to obtain the values).  You can also update the capability-api-1.html, capability-api-2.html, and capability-api-3.html files if you want the sample code to match the actual running code. 
