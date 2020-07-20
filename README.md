@@ -8,6 +8,7 @@ The configuration steps below assume you are running this code on a Qlik Sense E
       * If you like, you can add the URL http://localhost:1234/login as the Authentication module redirect URI.  This will redirect unauthenticated users that attempt to access Qlik Sense via this virtual proxy path to the URI you provide (for authentication).
       * Add the unqualified *server name* and *localhost* to the Host white list.
       * Link the newly created virtual proxy to the Central Proxy service.
+      * Since I run this project on the Qlik Sense Server, I add *localhost:1234* (in addition to any other entries needed) to the Virtual Proxy Whitelist and *Access-Control-Allow-Origin:http://localhost:1234* to the Additional response headers.
 2.	Check the *Enable HTTP* box in Central Proxy edit screen.
 3.	Add the file *redirect-ticket.html* to the Default content library.  The file is shipped with this project in the *{root}/qse* folder.
 4.	Import the app *Demo.qvf* into your QSE environment.  The file is shipped with this project in the *{root}/qse* folder.
