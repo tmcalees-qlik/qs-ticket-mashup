@@ -55,3 +55,6 @@ The configuration steps below assume you are running this code on a Qlik Sense E
 
 
 Once the server is running, you can access the login page using the URL http://localhost:1234/login.  You do not need to enter a password, as no actual password check is implemented in this code; however, you do need to enter a valid *username* and *directory* for a user that has been granted a license in your environment.  
+
+#  Notes
+> * Make sure you are consistent with the DNS name used to access the Qlik Sense Server.  For example, if you are running this app on the server and access the server using *localhost* when authenticating, make sure you use *localhost* in the Single Configurator URI rather than the server name (ex. *qlikserver*).  If you see a login prompt in the Single Configurator iFrame, this may be the issue.
