@@ -42,7 +42,7 @@ module.exports = [
 
             appCache.updateValue(sessionId, ticket);
 
-            // This redirectUri is a little trick to establish the Qlik Sense ticket cookie.  There are other ways to accomplish
+            // This redirectUri is a little trick to establish the Qlik Sense ticket session cookie.  There are other ways to accomplish
             // this, but this is one of the easiest.  I have uploaded an html file to the Default content repository via the QMC.
             // This html file contains a redirect to the mashups main page (http://localhost:1234/view/index.html).  Because the 
             // content library is a secure resource and the Uri contains a valid qlikTicket, the proxy will establish the Ticket
